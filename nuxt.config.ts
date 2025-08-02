@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   css: ["./app/assets/main.css"],
-  modules: ["@nuxt/fonts"],
+  modules: ["@nuxt/fonts", "@vueuse/nuxt"],
   vite: {
     plugins: [tailwindcss()],
     server: {
