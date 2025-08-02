@@ -8,5 +8,10 @@ export default defineNuxtConfig({
   modules: ["@nuxt/fonts"],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      // Allow access to the dev server from Cloudflare Tunnel
+      // Used for local development
+      allowedHosts: [".trycloudflare.com"],
+    },
   },
 })

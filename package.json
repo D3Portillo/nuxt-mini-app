@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxt/fonts": "^0.11.4",
     "@tailwindcss/vite": "^4.1.11",
+    "@worldcoin/minikit-js": "^1.9.6",
     "nuxt": "^4.0.1",
     "tailwindcss": "^4.1.11",
     "vue": "^3.5.18",
