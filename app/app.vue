@@ -42,11 +42,30 @@ onMounted(async () => {
     } catch (_) {}
   }
 })
+
+useHead({
+  title: "Mini App Starter",
+  htmlAttrs: {
+    lang: "en",
+  },
+  meta: [
+    {
+      name: "description",
+      content:
+        "A Nuxt flavored start pack for building Mini Apps for Worldchain",
+    },
+    {
+      property: "og:image",
+      content: "https://movies.nuxt.space/social-card.png",
+    },
+    { name: "twitter:card", content: "summary_large_image" },
+  ],
+})
 </script>
 
 <template>
   <Toaster position="top-center" />
   <NuxtLoadingIndicator color="#000" />
   <NuxtRouteAnnouncer />
-  <NuxtPage />
+  <NuxtPage class="max-w-2xl mx-auto" />
 </template>
