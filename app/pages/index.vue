@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { MiniKit } from "@worldcoin/minikit-js"
 import { toast } from "vue-sonner"
+
 import { useUser } from "~/atoms/user"
+import { disconnectWallet } from "~/lib/wallet"
 
 import { SIGN_IN_STATEMENT } from "~/lib/constants"
 
@@ -23,8 +25,6 @@ const connectWallet = async () => {
       statement: SIGN_IN_STATEMENT,
     })
 
-    console.debug({ finalPayload })
-
     if (finalPayload.status === "success") {
       // Set user state with wallet address and username
       setUser({
@@ -44,15 +44,6 @@ const connectWallet = async () => {
   } catch (error) {
     console.error(error)
   }
-}
-
-// Disconnect wallet function
-const disconnectWallet = () => {
-  setUser({
-    walletAddress: "",
-    username: "",
-    authPayload: null,
-  })
 }
 </script>
 

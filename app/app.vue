@@ -1,8 +1,11 @@
 <script lang="ts" setup>
 import "vue-sonner/style.css"
+
 import { Toaster } from "vue-sonner"
 import { MiniKit } from "@worldcoin/minikit-js"
+
 import { useUser } from "./atoms/user"
+import { disconnectWallet } from "./lib/wallet"
 
 const { authPayload, user, isConnected } = useUser()
 onMounted(async () => {
@@ -31,13 +34,10 @@ onMounted(async () => {
         },
       })
 
-      console.debug({
-        isValid,
-        user: user.value,
-        authPayload: authPayload.value,
-      })
       if (!isValid) {
+        // If session is invalid, we disconnect the wallet
         console.warn("Session validation failed, disconnecting wallet")
+        disconnectWallet()
       }
     } catch (_) {}
   }
