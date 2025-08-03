@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { MiniKit } from "@worldcoin/minikit-js"
+import { toast } from "vue-sonner"
 import { useUser } from "~/atoms/user"
+
+import { SIGN_IN_STATEMENT } from "~/lib/constants"
 
 const { user, setUser, isConnected } = useUser()
 
 // Connect wallet function
 const connectWallet = async () => {
-  if (!MiniKit.isInstalled()) return alert("MiniKit Not Available")
+  if (!MiniKit.isInstalled()) return toast.error("MiniKit Not Available")
 
   try {
     // Generate a nonce for the wallet auth
@@ -17,14 +20,23 @@ const connectWallet = async () => {
       nonce: nonce,
       expirationTime: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // 7 days
       notBefore: new Date(new Date().getTime() - 24 * 60 * 60 * 1000), // 1 day ago
-      statement: "Confirm your wallet connection to Worldchain",
+      statement: SIGN_IN_STATEMENT,
     })
+
+    console.debug({ finalPayload })
 
     if (finalPayload.status === "success") {
       // Set user state with wallet address and username
       setUser({
         walletAddress: finalPayload.address,
         username: MiniKit?.user?.username || "",
+        authPayload: {
+          // Store the auth payload for future use
+          // to validate the session and it's expiration
+          signature: finalPayload.signature,
+          message: finalPayload.message,
+          version: finalPayload.version,
+        },
       })
 
       console.log("Wallet connected successfully:", finalPayload)
@@ -36,18 +48,17 @@ const connectWallet = async () => {
 
 // Disconnect wallet function
 const disconnectWallet = () => {
-  // * TODO: Implement actual disconnect logic if needed
-  // For now, just clear the state
   setUser({
     walletAddress: "",
     username: "",
+    authPayload: null,
   })
 }
 </script>
 
 <template>
   <main class="p-6">
-    <h2 class="font-bold text-2xl text-black">World Starter Template</h2>
+    <h2 class="font-bold text-2xl">World Starter Template</h2>
     <p class="max-w-xs">
       A Nuxt flavored start pack for building Mini Apps for Worldchain
     </p>
@@ -79,7 +90,7 @@ const disconnectWallet = () => {
 
     <div
       v-if="user.walletAddress"
-      class="mt-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded"
+      class="mt-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded-lg"
     >
       <p><strong>Wallet Address:</strong> {{ user.walletAddress }}</p>
       <p v-if="user.username">
@@ -88,7 +99,7 @@ const disconnectWallet = () => {
     </div>
 
     <template v-if="isConnected">
-      <hr class="my-8" />
+      <div class="my-8 h-[2px] bg-black rounded-full" />
       <ExampleSignMessage :user="user" />
     </template>
   </main>
