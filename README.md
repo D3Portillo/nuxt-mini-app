@@ -1,75 +1,26 @@
-# Nuxt Minimal Starter
+# Nuxt Mini App Starter Template
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a simple boilerplate for building worldchain Mini Apps using Nuxt 4 and Vue 3. It includes basic authentication and session management using the SIWE.
 
-## Setup
+## Features
 
-Make sure to install dependencies:
+- User authentication with World App Wallet
+- Session management using SIWE
+- Tailwind CSS ready integration
+- Simple and clean code structure
+
+## Getting Started
+
+To get started with this template, clone the repository and install the dependencies:
 
 ```bash
-# npm
+git clone https://github.com/D3Portillo/nuxt-mini-app.git
+cd nuxt-mini-app
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+Then, start the development server:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
