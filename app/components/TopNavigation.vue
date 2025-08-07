@@ -92,13 +92,13 @@ const handleCopyAddress = () => {
         <div class="w-full flex flex-col gap-3">
           <button
             @click="handleVisitNFTCollection"
-            class="w-full h-11 bg-black/10 p-2 rounded-xl font-semibold"
+            class="w-full h-12 bg-black/10 p-2 rounded-xl font-semibold"
           >
             NFT Collection
           </button>
           <button
             @click="handleToggleConnectWallet"
-            class="w-full bg-black h-11 text-white p-2 rounded-xl font-semibold"
+            class="w-full bg-black h-12 text-white p-2 rounded-xl font-semibold"
           >
             {{ isConnected ? `Disconnect Wallet` : `Connect Wallet` }}
           </button>

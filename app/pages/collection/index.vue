@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useUser } from "~/atoms/user"
 
-const { user, connectWallet, isConnected } = useUser()
+const { user } = useUser()
+// TODO: Render user claimed NFTs
 </script>
 
 <template>
@@ -11,22 +12,24 @@ const { user, connectWallet, isConnected } = useUser()
     </nav>
 
     <p class="max-w-xs">
-      This badge represents your first step into building on Worldchain.
+      Claim a unique badge that represents your first step into building on
+      Worldchain.
     </p>
 
     <div class="my-6" />
 
-    <template v-if="isConnected">
-      <div class="my-8 h-[2px] bg-black rounded-full" />
-      <ExampleSignMessage :user="user" />
-    </template>
+    <NFTClaimButton />
 
-    <button
-      v-else
-      @click="connectWallet"
-      class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+    <div class="mt-8 mb-4 h-[2px] bg-black rounded-full" />
+    <nav class="flex mb-4 items-center justify-between">
+      <strong>Claimed NFTs</strong>
+      <span class="text-lg">{{ 0 }}</span>
+    </nav>
+
+    <div
+      class="h-40 grid place-items-center rounded-xl border border-dashed border-black/25"
     >
-      Connect Wallet
-    </button>
+      <UIcon class="size-12 opacity-30" name="i-fa-star-half-empty" />
+    </div>
   </main>
 </template>

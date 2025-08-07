@@ -67,7 +67,7 @@ useHead({
   <NuxtLoadingIndicator color="#000" />
   <NuxtRouteAnnouncer />
 
-  <div class="max-w-2xl flex-col overflow-hidden h-dvh mx-auto">
+  <div class="max-w-2xl text-black flex-col overflow-hidden h-dvh mx-auto">
     <TopNavigation />
     <NuxtPage class="h-full" />
     <BottomNavigation />
