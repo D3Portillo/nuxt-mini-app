@@ -5,9 +5,8 @@ import { Toaster } from "vue-sonner"
 import { MiniKit } from "@worldcoin/minikit-js"
 
 import { useUser } from "./atoms/user"
-import { disconnectWallet } from "./lib/wallet"
 
-const { authPayload, user, isConnected } = useUser()
+const { authPayload, user, isConnected, disconnectWallet } = useUser()
 onMounted(async () => {
   // Setup MiniKit
   MiniKit.install()
@@ -67,5 +66,10 @@ useHead({
   <Toaster position="top-center" />
   <NuxtLoadingIndicator color="#000" />
   <NuxtRouteAnnouncer />
-  <NuxtPage class="max-w-2xl mx-auto" />
+
+  <div class="max-w-2xl flex-col overflow-hidden h-dvh mx-auto">
+    <TopNavigation />
+    <NuxtPage class="h-full" />
+    <BottomNavigation />
+  </div>
 </template>

@@ -29,14 +29,9 @@ const handleClaimNFT = async () => {
 </script>
 
 <template>
-  <h2 class="font-bold text-2xl">Sign Message Example</h2>
-
-  <p>
-    Sign this transaction to prove you're a human and claim your Unicorn NFT 🦄
-  </p>
   <button
     @click="handleClaimNFT"
-    class="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 mt-4"
+    class="bg-pink-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-600 mt-4"
   >
     Claim Unicorn NFT
   </button>
